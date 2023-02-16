@@ -20,8 +20,8 @@ GET STORAGE
   
 Screenshots
 
-![screens](1.jpg)
-![screens](2.jpg)
-![screens](3.jpg)
-![screens](4.jpg)
+![screens](https://raw.githubusercontent.com/yvzakll/accs-accs/master/assets/screens/1.jpeg)
+![screens](https://raw.githubusercontent.com/yvzakll/accs-accs/master/assets/screens/2.jpeg)
+![screens](https://raw.githubusercontent.com/yvzakll/accs-accs/master/assets/screens/3.jpeg)
+![screens](https://raw.githubusercontent.com/yvzakll/accs-accs/master/assets/screens/4.jpeg)
 
