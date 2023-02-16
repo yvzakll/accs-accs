@@ -1,16 +1,28 @@
-# pin_generator
 
-A new Flutter project.
+AIFA CYBER SECURITY SYSTEM
 
-## Getting Started
+AIFA CYBER SECURITY SYSTEM is a login key generator for our Windows RDP Guard Project. 
 
-This project is a starting point for a Flutter application.
+In this project, I created a listview and developed a structure that holds the data in it. Then I produced a login key by combining the auth key I held with the ref key entered by the user.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Kullanılan Teknolojiler
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Dart Flutter
+Shared Preferences
+GET STORAGE 
+
+  
+## Ekran Görüntüleri
+
+![Uygulama Ekran Görüntüsü](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+<img src="assets/screens/1.jpg">
+<img src="assets/screens/2.jpg">
+<img src="assets/screens/3.jpg">
+<img src="assets/screens/4.jpg">
+## Lisans
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+  
