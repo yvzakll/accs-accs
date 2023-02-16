@@ -6,23 +6,22 @@ AIFA CYBER SECURITY SYSTEM is a login key generator for our Windows RDP Guard Pr
 In this project, I created a listview and developed a structure that holds the data in it. Then I produced a login key by combining the auth key I held with the ref key entered by the user.
 
 
-## Kullanılan Teknolojiler
+## Technologies
 
 Dart Flutter
 Shared Preferences
 GET STORAGE 
 
   
-## Ekran Görüntüleri
-
-![Uygulama Ekran Görüntüsü](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-<img src="assets/screens/1.jpg">
-<img src="assets/screens/2.jpg">
-<img src="assets/screens/3.jpg">
-<img src="assets/screens/4.jpg">
 ## Lisans
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
   
+Screenshots
+
+![screens](1.jpg)
+![screens](2.jpg)
+![screens](3.jpg)
+![screens](4.jpg)
+
