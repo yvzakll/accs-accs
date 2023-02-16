@@ -42,6 +42,7 @@ dependencies:
   get_storage: ^2.0.3
   get: ^4.6.5
   path_provider: ^2.0.12
+  url_launcher: ^6.1.9
   
 
 dev_dependencies:
@@ -72,6 +73,7 @@ flutter:
     - assets/images/logobarblack2.jpg
     - assets/images/logo.png
     - assets/images/logo2.png
+    - assets/images/aifa.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

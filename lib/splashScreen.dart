@@ -87,16 +87,26 @@ class _SplashScreenState extends State<SplashScreen>
       child: Scaffold(
         backgroundColor: appcolor,
         body: Center(
-          child: FadeTransition(
-            opacity: _opacityAnimation,
-            child: ScaleTransition(
-              scale: _pulseAnimation,
-              child: Image.asset(
-                "assets/images/logo.png",
-                height: 30,
-                width: 50,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              FadeTransition(
+                opacity: _opacityAnimation,
+                child: ScaleTransition(
+                  scale: _pulseAnimation,
+                  child: Image.asset(
+                    "assets/images/logo.png",
+                    height: 30,
+                    width: 50,
+                  ),
+                ),
               ),
-            ),
+              Image.asset(
+                "assets/images/aifa.png",
+                height: 30,
+                width: 150,
+              ),
+            ],
           ),
         ),
 

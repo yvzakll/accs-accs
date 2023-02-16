@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pin_generator/storage.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({key, this.title});
@@ -14,14 +15,14 @@ class _MyHomePageState extends State<MyHomePage> {
   String _pinResult = "N/A";
   TextEditingController authCode = TextEditingController();
   TextEditingController refKey = TextEditingController();
-  int deneme;
+  String deneme;
   String pc;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    deneme = int.parse(box.read("authKey"));
+    deneme = box.read("authKey");
     pc = box.read("name");
   }
 
@@ -82,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontWeight: FontWeight.bold,
                 ),
               ), */
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Container(
@@ -92,7 +93,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 55.0, vertical: 15),
                 child: TextField(
-                  keyboardType: TextInputType.number,
                   controller: refKey,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(
@@ -130,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             side: const BorderSide(color: Colors.orange)))),
                 onPressed: () {
                   setState(() {
-                    _pinResult = getPinCode(deneme, int.parse(refKey.text));
+                    _pinResult = getPinCode(deneme, refKey.text);
                   });
                 },
                 child: const Text("Generate Password"),
@@ -149,6 +149,50 @@ class _MyHomePageState extends State<MyHomePage> {
               const SizedBox(
                 height: 40,
               ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      _launchUrl();
+                    },
+                    child: Image.asset(
+                      "assets/images/aifa.png",
+                      height: 25,
+                      width: 100,
+                    ),
+                  ),
+                ],
+              ),
+              /*
+              InkWell(
+                                onTap: () {
+                                  setState(() async {
+                                    const url =
+                                        "https://www.hepsiburada.com/sahapkuyumcu";
+                                    if (await canLaunch(url)) await launch(url);
+                                  });
+                                },
+                                child: Card(
+                                  child: Container(
+                                    child: Image.asset(
+                                      "assets/images/hepsi.png",
+                                      fit: BoxFit.contain,
+                                    ),
+                                    height: 60,
+                                    width: 65,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                  ),
+                                ),
+                              ),
+              
+              */
+
               /*  ElevatedButton(
                   onPressed: () {}, child: const Text("Yeni Giriş Ekle")), */
             ],
@@ -158,18 +202,30 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  String getPinCode(int key, int data) {
+  String getPinCode(String key, String data) {
     String result = "";
     try {
-      int sonuc;
-      sonuc = data + key;
-
-      result = sonuc.toString().substring(0, 6);
+      String ascList = "";
+      for (var i = 0; i <= data.length - 1; i++) {
+        String k = key[i];
+        String d = data[i];
+        ascList += (d.codeUnitAt(0) + k.codeUnitAt(0)).toString();
+        ascList = ascList;
+      }
+      result = ascList.substring(1, 7);
     } catch (e) {
       return result;
     }
 
     return result;
+  }
+
+  Future<void> _launchUrl() async {
+    const _url = "http://aifasoft.com/";
+    if (!await launchUrl(
+        Uri(scheme: 'http', host: "aifasoft.com", path: "/"))) {
+      throw Exception('Could not launch $_url');
+    }
   }
 }
 
@@ -194,3 +250,17 @@ String getPinCode(String key, String data) {
   }
 
 */
+
+/*  String getPinCode(int key, int data) {
+    String result = "";
+    try {
+      int sonuc;
+      sonuc = data + key;
+
+      result = sonuc.toString().substring(0, 6);
+    } catch (e) {
+      return result;
+    }
+
+    return result;
+  } */
