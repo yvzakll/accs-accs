@@ -86,6 +86,7 @@ class _TodoViewState extends State<TodoView> {
               ),
               Container(
                   child: colorOverride(TextField(
+                keyboardType: TextInputType.number,
                 maxLines: 1,
                 onChanged: (data) {
                   todo.description = data;
@@ -165,7 +166,18 @@ class _TodoViewState extends State<TodoView> {
                   size: 35,
                 ),
                 onPressed: () {
-                  Navigator.pop(context, todo);
+                  if (descriptionController.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text("Please enter a  authorization key"),
+                    ));
+                  } else if (descriptionController.text.length < 6) {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text(
+                          "Please enter a minimum 6 digits authorization key"),
+                    ));
+                  } else {
+                    Navigator.pop(context, todo);
+                  }
                 },
               )
             ],

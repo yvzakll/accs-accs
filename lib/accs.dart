@@ -14,14 +14,14 @@ class _MyHomePageState extends State<MyHomePage> {
   String _pinResult = "N/A";
   TextEditingController authCode = TextEditingController();
   TextEditingController refKey = TextEditingController();
-  String deneme;
+  int deneme;
   String pc;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    deneme = box.read("authKey");
+    deneme = int.parse(box.read("authKey"));
     pc = box.read("name");
   }
 
@@ -92,6 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 55.0, vertical: 15),
                 child: TextField(
+                  keyboardType: TextInputType.number,
                   controller: refKey,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(
@@ -109,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     contentPadding: const EdgeInsets.all(10.0),
                     hintText: "Ref Key", // pass the hint text parameter here
-                    hintStyle: TextStyle(color: Colors.white70),
+                    hintStyle: const TextStyle(color: Colors.white70),
                   ),
                   style: const TextStyle(color: Colors.white),
                 ),
@@ -126,10 +127,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
-                            side: BorderSide(color: Colors.orange)))),
+                            side: const BorderSide(color: Colors.orange)))),
                 onPressed: () {
                   setState(() {
-                    _pinResult = getPinCode(deneme, refKey.text);
+                    _pinResult = getPinCode(deneme, int.parse(refKey.text));
                   });
                 },
                 child: const Text("Generate Password"),
@@ -145,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               /*  ElevatedButton(
@@ -157,7 +158,24 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  String getPinCode(String key, String data) {
+  String getPinCode(int key, int data) {
+    String result = "";
+    try {
+      int sonuc;
+      sonuc = data + key;
+
+      result = sonuc.toString().substring(0, 6);
+    } catch (e) {
+      return result;
+    }
+
+    return result;
+  }
+}
+
+
+/*
+String getPinCode(String key, String data) {
     String result = "";
     try {
       String ascList = "";
@@ -174,4 +192,5 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return result;
   }
-}
+
+*/

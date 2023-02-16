@@ -123,21 +123,18 @@ class _HomePageState extends State<HomePage> {
       },
       child: ListTile(
           contentPadding:
-              const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-          leading: InkWell(
-              onTap: () async {
-                Todo t = await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => TodoView(todo: todos[index])));
-                if (t != null) {
-                  setState(() {
-                    todos[index] = t;
-                  });
-                  saveTodo();
-                }
-              },
-              child: const Icon(Icons.edit, color: Colors.white, size: 30.0)),
+              const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+          leading: Container(
+            padding: const EdgeInsets.only(right: 12.0),
+            decoration: const BoxDecoration(
+                border: Border(
+                    right: BorderSide(width: 1.0, color: Colors.white24))),
+            child: const CircleAvatar(
+              backgroundColor: Colors.black26,
+              child: Icon(Icons.computer, color: Colors.white, size: 20.0),
+            ),
+          ),
+          minVerticalPadding: 18,
           title: Row(
             children: [
               Text(
@@ -145,7 +142,8 @@ class _HomePageState extends State<HomePage> {
                 style: const TextStyle(
                     color: Colors.white, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(
+
+              /*   const SizedBox(
                 width: 10,
               ),
               todo.status
@@ -153,12 +151,13 @@ class _HomePageState extends State<HomePage> {
                       Icons.verified,
                       color: Colors.greenAccent,
                     )
-                  : Container()
+                  : Container() */
             ],
           ),
-          // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
+          // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)), Icon(Icons.computer, color: Colors.white, size: 25.0),
 
           subtitle: Wrap(
+            // ignore: prefer_const_literals_to_create_immutables
             children: <Widget>[
               /* Text(todo.description,
                   overflow: TextOverflow.clip,
@@ -166,12 +165,36 @@ class _HomePageState extends State<HomePage> {
                   style: const TextStyle(color: Colors.white),), */
             ],
           ),
-          trailing: InkWell(
-              onTap: () {
-                delete(todo);
-              },
-              child:
-                  const Icon(Icons.delete, color: Colors.white, size: 30.0))),
+          trailing: Wrap(
+            alignment: WrapAlignment.end,
+            children: [
+              InkWell(
+                onTap: () async {
+                  Todo t = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TodoView(todo: todos[index])));
+                  if (t != null) {
+                    setState(() {
+                      todos[index] = t;
+                    });
+                    saveTodo();
+                  }
+                },
+                child: const Icon(Icons.edit, color: Colors.white, size: 30.0),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              InkWell(
+                onTap: () {
+                  delete(todo);
+                },
+                child:
+                    const Icon(Icons.delete, color: Colors.white, size: 30.0),
+              ),
+            ],
+          )),
     );
   }
 
